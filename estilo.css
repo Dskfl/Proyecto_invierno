@@ -1,0 +1,134 @@
+/* Reset básico para limpiar márgenes del navegador */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.5;
+    scroll-behavior: smooth;
+    animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía limpia estilo Canva */
+}
+
+/* Estructura del Banner Principal */
+.hero-banner {
+    width: 100%;
+    height: 100vh; /* Ocupa toda la pantalla */
+    
+    /* Primero definimos el color azul rey de tu diseño de Canva */
+    background-color: #005da9; 
+    
+    /* CAMBIA 'Mostrar mas(1).jpg' por el nombre real de tu archivo de fondo */
+    background-image: url('Fondo.png'); 
+    
+    background-size: contain;
+    background-position: bottom left;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    display: flex;
+    align-items: center;
+    padding-left: 15%; /* Ajusta este número para mover el bloque de texto a la derecha */
+}
+
+/* Contenedor interno del texto */
+.hero-content {
+    max-width: 650px;
+    color: white;
+}
+
+/* Título Principal */
+.hero-content h1 {
+    font-size: 3.8rem; /* Tamaño grande e imponente */
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Subtítulo */
+.hero-content h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 35px;
+    opacity: 0.95; /* Un toque sutil de suavidad al blanco */
+}
+
+/* Botón Mostrar Más */
+.btn-mostrar {
+    background-color: #2394bd; /* El color celeste/turquesa exacto de tu botón */
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 28px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave para el efecto hover */
+}
+
+/* Efecto visual al pasar el cursor sobre el botón */
+.btn-mostrar:hover {
+    background-color: #1e4691;
+}
+
+/* Diseño Responsivo: Se adapta si lo abren en un celular */
+@media (max-width: 768px) {
+    .hero-banner {
+        padding-left: 5%;
+        padding-right: 5%;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.1rem;
+    }
+}
+/* ================= ACCESIBILIDAD ================= */
+:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
