@@ -1,134 +1,364 @@
-/* Reset básico para limpiar márgenes del navegador */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-    background-color: var(--light);
-    color: var(--dark);
-    line-height: 1.5;
-    scroll-behavior: smooth;
-    animation: fadeInScale 0.6s ease-out;
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
+{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    to {
-        opacity: 1;
-        transform: scale(1);
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a1a24;
+      color: #f0f5fa;
+      line-height: 1.5;
+      overflow-x: hidden;
     }
-}
 
+    #rain-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 0;
+      pointer-events: none;
+    }
 
+    .page-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+      background: rgba(8, 28, 36, 0.68);
+      backdrop-filter: blur(3px);
+      min-height: 100vh;
+    }
 
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #F0FCFF, #A7D8F0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía limpia estilo Canva */
-}
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+      display: inline-block;
+      color: #eef5fc;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 3px;
+      background: #A7D8F0;
+      border-radius: 4px;
+    }
 
-/* Estructura del Banner Principal */
-.hero-banner {
-    width: 100%;
-    height: 100vh; /* Ocupa toda la pantalla */
+    .lead {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      color: #d6edf9;
+      max-width: 750px;
+    }
+
+    /* Tarjetas */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0 2.5rem;
+    }
+
+    .card {
+      background: rgba(20, 40, 48, 0.65);
+      backdrop-filter: blur(8px);
+      border-radius: 2rem;
+      padding: 1.8rem 1.5rem;
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(167, 216, 240, 0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #A7D8F0;
+      background: rgba(25, 55, 65, 0.75);
+    }
+
+    .card-icon {
+      font-size: 2.6rem;
+      color: #A7D8F0;
+      margin-bottom: 1.2rem;
+    }
+
+    .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .badge-tip {
+      display: inline-block;
+      background: rgba(167, 216, 240, 0.15);
+      padding: 0.25rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #c7e9fc;
+      border: 1px solid rgba(167, 216, 240, 0.5);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(105deg, #4f8ba0, #2f5e72);
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      color: white;
+      cursor: pointer;
+      border: 1px solid rgba(167, 216, 240, 0.5);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(105deg, #6aaec6, #3b748c);
+      transform: scale(1.02);
+      border-color: #A7D8F0;
+    }
+
+    .checklist-section {
+      background: rgba(10, 28, 35, 0.7);
+      backdrop-filter: blur(5px);
+      border-radius: 2rem;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      border: 1px solid rgba(167, 216, 240, 0.45);
+    }
+
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0,0,0,0.25);
+      padding: 0.75rem 1rem;
+      border-radius: 60px;
+    }
+
+    .check-item i {
+      font-size: 1.3rem;
+      color: #A7D8F0;
+      width: 28px;
+    }
+
+    /* Footer */
+    .footer-note {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(167, 216, 240, 0.4);
+      font-size: 0.85rem;
+      color: #cae3f0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-wrapper { padding: 1.2rem 1rem 2rem; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.6rem; }
+      .lead { font-size: 1rem; }
+      .cards-grid { gap: 1.2rem; }
+      .card { padding: 1.2rem; }
+    }
+    @media (max-width: 480px) {
+      .checklist-grid { grid-template-columns: 1fr; }
+      .btn-primary { width: 100%; justify-content: center; }
+    }
+
+    /* Animaciones */
+    .card, .checklist-section, .btn-primary {
+      animation: fadeSlideUp 0.55s ease-out backwards;
+    }
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.2s; }
+    .card:nth-child(5) { animation-delay: 0.25s; }
+    .card:nth-child(6) { animation-delay: 0.3s; }
+    .checklist-section { animation-delay: 0.2s; }
     
-    /* Primero definimos el color azul rey de tu diseño de Canva */
-    background-color: #005da9; 
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(24px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="rain-canvas"></canvas>
+
+<div class="page-wrapper">
+  <!-- ==================== ENCABEZADO EDITABLE ==================== -->
+  <header class="site-header" style="margin-bottom: 1rem;">
+    <!-- Puedes cambiar el título, el lead y el botón fácilmente -->
+    <h1><i class="fas fa-cloud-rain"></i> Lluvia & Invierno <br>Prepárate con anticipación</h1>
+    <p class="lead">
+      🌧️ Tormentas invernales, inundaciones y viento. Con el respaldo del color <strong style="color:#A7D8F0">celeste claro #A7D8F0</strong>,  
+      te ayudamos a proteger tu hogar. Sigue estos consejos esenciales.
+    </p>
+    <a href="#" class="btn-primary" id="actionBtn">
+      <i class="fas fa-umbrella"></i> Plan de emergencia
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </header>
+  <!-- ==================== FIN ENCABEZADO ==================== -->
+
+  <!-- Contenido principal (medidas y checklist) -->
+  <h2><i class="fas fa-tools"></i> Medidas clave</h2>
+  <div class="cards-grid">
+    <div class="card"><div class="card-icon"><i class="fas fa-gutter"></i></div><h3>Limpieza de canaletas</h3><p>Hojas y residuos bloquean el drenaje. Limpia canaletas y bajantes para evitar filtraciones.</p><span class="badge-tip"><i class="far fa-clock"></i> Hazlo antes de las lluvias</span></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-home"></i></div><h3>Inspección de techo</h3><p>Revisa tejas, juntas y posibles goteras. Un pequeño agujero puede convertirse en una inundación interior.</p><span class="badge-tip"><i class="fas fa-check-circle"></i> Sellado profesional</span></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-window-maximize"></i></div><h3>Sellado de ventanas</h3><p>Aplica burletes y silicona en marcos. Evita corrientes de aire frío y humedad.</p><span class="badge-tip"><i class="fas fa-temperature-low"></i> Ahorro energético</span></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-water"></i></div><h3>Drenaje perimetral</h3><p>Asegura que el agua fluya lejos de los cimientos. Limpia sumideros y mejora pendientes exteriores.</p><span class="badge-tip"><i class="fas fa-hard-hat"></i> Prevención de humedades</span></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-tree"></i></div><h3>Poda de árboles</h3><p>Ramas débiles pueden caer con tormentas. Elimina ramas secas que amenacen tu vivienda.</p><span class="badge-tip"><i class="fas fa-wind"></i> Riesgo de vientos fuertes</span></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-fire-extinguisher"></i></div><h3>Sistema de calefacción</h3><p>Revisa calderas, estufas y chimeneas. Un sistema eficiente te mantiene seguro durante cortes de luz.</p><span class="badge-tip"><i class="fas fa-gas-pump"></i> Mantenimiento preventivo</span></div>
+  </div>
+
+  <div class="checklist-section">
+    <h2 style="margin-bottom: 0.75rem;"><i class="fas fa-kit-medical"></i> Kit de emergencia para lluvias invernales</h2>
+    <p>Ten siempre a mano estos elementos ante posibles inundaciones o cortes de suministro:</p>
+    <div class="checklist-grid">
+      <div class="check-item"><i class="fas fa-flashlight"></i><span>Linternas + baterías extra</span></div>
+      <div class="check-item"><i class="fas fa-radio"></i><span>Radio portátil (baterías)</span></div>
+      <div class="check-item"><i class="fas fa-first-aid"></i><span>Botiquín de primeros auxilios</span></div>
+      <div class="check-item"><i class="fas fa-bottle-water"></i><span>Agua embotellada (3 días)</span></div>
+      <div class="check-item"><i class="fas fa-canned-food"></i><span>Comida no perecedera</span></div>
+      <div class="check-item"><i class="fas fa-charging-station"></i><span>Power bank / cargador solar</span></div>
+      <div class="check-item"><i class="fas fa-blanket"></i><span>Mantas térmicas y ropa impermeable</span></div>
+      <div class="check-item"><i class="fas fa-file-alt"></i><span>Documentos importantes en bolsa impermeable</span></div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
+    <div><i class="fas fa-cloud-moon" style="font-size: 2rem; color: #A7D8F0; margin-right: 0.5rem;"></i><span>“No subestimes el poder del agua, la preparación salva vidas”</span></div>
+    <a href="#" class="btn-primary" id="pdfBtn" style="background: linear-gradient(105deg, #1b5e6e, #0f3b46);"><i class="fas fa-download"></i> Guía PDF de invierno</a>
+  </div>
+
+  <!-- ==================== PIE DE PÁGINA EDITABLE ==================== -->
+  <footer class="footer-note">
+    <!-- Aquí puedes cambiar el texto, añadir enlaces, logos, etc. -->
+    <i class="fas fa-umbrella"></i> Prepárate, mantente seco y protegido. Revisa alertas meteorológicas frecuentemente.  
+    <br>© 2025 · Preparación para lluvias de invierno · Inspirado en <span style="color:#A7D8F0;">#A7D8F0</span> Celeste claro
+    <!-- Añade más elementos si lo deseas, por ejemplo:
+    <div class="footer-links"><a href="#">Aviso legal</a> | <a href="#">Contacto</a></div>
+    -->
+  </footer>
+  <!-- ==================== FIN PIE DE PÁGINA ==================== -->
+</div>
+
+<!-- Script de lluvia (canvas) -->
+<script>
+  (function() {
+    const canvas = document.getElementById('rain-canvas');
+    let ctx = canvas.getContext('2d');
+    let drops = [];
+    let animationId = null;
+    let canvasWidth, canvasHeight;
     
-    /* CAMBIA 'Mostrar mas(1).jpg' por el nombre real de tu archivo de fondo */
-    background-image: url('Fondo.png'); 
+    const DROP_COUNT = 210;
+    const MIN_LEN = 8, MAX_LEN = 22, MIN_SPEED = 2.8, MAX_SPEED = 6.2;
     
-    background-size: contain;
-    background-position: bottom left;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    display: flex;
-    align-items: center;
-    padding-left: 15%; /* Ajusta este número para mover el bloque de texto a la derecha */
-}
-
-/* Contenedor interno del texto */
-.hero-content {
-    max-width: 650px;
-    color: white;
-}
-
-/* Título Principal */
-.hero-content h1 {
-    font-size: 3.8rem; /* Tamaño grande e imponente */
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-/* Subtítulo */
-.hero-content h2 {
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 35px;
-    opacity: 0.95; /* Un toque sutil de suavidad al blanco */
-}
-
-/* Botón Mostrar Más */
-.btn-mostrar {
-    background-color: #2394bd; /* El color celeste/turquesa exacto de tu botón */
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 14px 28px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Transición suave para el efecto hover */
-}
-
-/* Efecto visual al pasar el cursor sobre el botón */
-.btn-mostrar:hover {
-    background-color: #1e4691;
-}
-
-/* Diseño Responsivo: Se adapta si lo abren en un celular */
-@media (max-width: 768px) {
-    .hero-banner {
-        padding-left: 5%;
-        padding-right: 5%;
-        justify-content: center;
-        text-align: center;
+    function initDrops(width, height) {
+      const newDrops = [];
+      for (let i = 0; i < DROP_COUNT; i++) {
+        newDrops.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          length: MIN_LEN + Math.random() * (MAX_LEN - MIN_LEN),
+          speed: MIN_SPEED + Math.random() * (MAX_SPEED - MIN_SPEED),
+          opacity: 0.4 + Math.random() * 0.5,
+          thickness: 1.2 + Math.random() * 1.2
+        });
+      }
+      return newDrops;
     }
     
-    .hero-content h1 {
-        font-size: 2.5rem;
+    function resizeCanvas() {
+      canvasWidth = window.innerWidth;
+      canvasHeight = window.innerHeight;
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+      drops = initDrops(canvasWidth, canvasHeight);
     }
     
-    .hero-content h2 {
-        font-size: 1.1rem;
+    function drawRain() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      for (let i = 0; i < drops.length; i++) {
+        const d = drops[i];
+        ctx.beginPath();
+        const tilt = 1.2;
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x + tilt, d.y + d.length);
+        ctx.lineWidth = d.thickness;
+        ctx.strokeStyle = `rgba(167, 216, 240, ${d.opacity * 0.8})`;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(d.x + tilt, d.y + d.length - 2, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(167, 216, 240, ${d.opacity * 0.5})`;
+        ctx.fill();
+      }
+      for (let i = 0; i < drops.length; i++) {
+        drops[i].y += drops[i].speed;
+        drops[i].x += 0.2;
+        if (drops[i].y > canvasHeight + 50 || drops[i].x > canvasWidth + 80) {
+          drops[i].y = -30 - Math.random() * 40;
+          drops[i].x = Math.random() * (canvasWidth + 40) - 20;
+          drops[i].length = MIN_LEN + Math.random() * (MAX_LEN - MIN_LEN);
+          drops[i].speed = MIN_SPEED + Math.random() * (MAX_SPEED - MIN_SPEED);
+        }
+        if (drops[i].x < -80) {
+          drops[i].x = canvasWidth + 20;
+          drops[i].y = Math.random() * canvasHeight;
+        }
+      }
+      animationId = requestAnimationFrame(drawRain);
     }
-}
-/* ================= ACCESIBILIDAD ================= */
-:focus-visible {
-    outline: 3px solid var(--primary);
-    outline-offset: 2px;
-    border-radius: 4px;
-}
+    
+    function startRain() {
+      if (animationId) cancelAnimationFrame(animationId);
+      resizeCanvas();
+      drawRain();
+    }
+    window.addEventListener('resize', () => { resizeCanvas(); drops = initDrops(canvasWidth, canvasHeight); });
+    startRain();
+    window.addEventListener('beforeunload', () => { if (animationId) cancelAnimationFrame(animationId); });
+  })();
+</script>
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
+<script>
+  // Pequeños alertas para los botones (solo demostración)
+  const btnPlan = document.getElementById('actionBtn');
+  if (btnPlan) btnPlan.addEventListener('click', (e) => { e.preventDefault(); alert('📋 Checklist: Revisa canaletas, sella ventanas, prepara kit de emergencia.'); });
+  const pdfBtn = document.getElementById('pdfBtn');
+  if (pdfBtn) pdfBtn.addEventListener('click', (e) => { e.preventDefault(); alert('📄 Guía PDF de preparación para lluvias invernales.'); });
+</script>
