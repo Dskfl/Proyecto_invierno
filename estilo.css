@@ -1,5 +1,43 @@
-/* Reset básico para limpiar márgenes del navegador */
+/* ==========================================================================
+   1. VARIABLES CSS (SISTEMA DE DISEÑO MODERNO)
+   ========================================================================== */
+:root {
+    --primary: #2595eb;
+    --primary-dark: #1e7bbf;
+    --secondary: #2595eb;
+    --accent: #55a3e2;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --gray-light: #e2e8f0;
+    --white: #ffffff;
+    --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 25px 30px -12px rgba(0, 0, 0, 0.15);
+    --radius: 1rem;
+    --radius-lg: 1.5rem;
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+/* Variables para Modo Oscuro */
+[data-theme="dark"] {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #3b82f6;
+    --accent: #2d56db;
+    --dark: #f8fafc;
+    --light: #0f172a;
+    --gray: #94a3b8;
+    --gray-light: #334155;
+    --white: #1e293b;
+    --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 25px 30px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   2. RESET & GLOBALES
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -16,116 +54,323 @@ body {
 }
 
 @keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-
-
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía limpia estilo Canva */
-}
-
-/* Estructura del Banner Principal */
-.hero-banner {
-    width: 100%;
-    height: 100vh; /* Ocupa toda la pantalla */
-    
-    /* Primero definimos el color azul rey de tu diseño de Canva */
-    background-color: #005da9; 
-    
-    /* CAMBIA 'Mostrar mas(1).jpg' por el nombre real de tu archivo de fondo */
-    background-image: url('Fondo.png'); 
-    
-    background-size: contain;
-    background-position: bottom left;
-    background-position: center;
-    background-repeat: no-repeat;
-    
+/* ==========================================================================
+   3. NAVEGACIÓN SUPERIOR (GLASSMORPHISM)
+   ========================================================================== */
+nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-sm);
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding-left: 15%; /* Ajusta este número para mover el bloque de texto a la derecha */
+    gap: 1rem;
 }
 
-/* Contenedor interno del texto */
-.hero-content {
-    max-width: 650px;
+[data-theme="dark"] nav {
+    background: rgba(30, 41, 59, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav .nav-links {
+    display: flex;
+    gap: 0.25rem;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    margin: 0;
+    color: var(--dark);
+    font-weight: 500;
+    border-radius: 2rem;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+nav a:hover {
+    background: var(--primary);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 
-/* Título Principal */
-.hero-content h1 {
-    font-size: 3.8rem; /* Tamaño grande e imponente */
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-/* Subtítulo */
-.hero-content h2 {
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 35px;
-    opacity: 0.95; /* Un toque sutil de suavidad al blanco */
-}
-
-/* Botón Mostrar Más */
-.btn-mostrar {
-    background-color: #2394bd; /* El color celeste/turquesa exacto de tu botón */
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 14px 28px;
+.theme-toggle {
+    background: none;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Transición suave para el efecto hover */
+    font-size: 1.5rem;
+    color: var(--dark);
+    transition: var(--transition);
+    margin-left: auto;
 }
 
-/* Efecto visual al pasar el cursor sobre el botón */
+[data-theme="dark"] .theme-toggle {
+    color: var(--light);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   4. SECCIÓN DE INICIO (CENTRADITA Y SIN RECORTES BLANCOS)
+   ========================================================================== */
+.hero-banner {
+    width: 100%;
+    
+    min-height: 100vh; 
+    background-color: #005da9; 
+    background-image: url('Fondo.png'); 
+    
+    /* Cover adapta la imagen sin aplastarla. Center bottom asegura que el perrito no se corte */
+    background-size: cover; 
+    background-position: center bottom; 
+    background-repeat: no-repeat;
+    
+    /* Centramos todo el contenido */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 600px;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    
+    /* Alineación de textos y botones al centro */
+    align-items: center; 
+    text-align: center;  
+    gap: 1.2rem;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem); 
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para que resalte sobre las nubes */
+}
+
+.hero-content h2 {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones centralizados */
+.btn-mostrar {
+    background-color: var(--white);
+    color: #005da9; 
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    max-width: 280px; 
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
 .btn-mostrar:hover {
-    background-color: #1e4691;
+    background-color: var(--primary);
+    color: var(--white);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
 }
 
-/* Diseño Responsivo: Se adapta si lo abren en un celular */
+/* ==========================================================================
+   5. CABECERAS PARA LAS PÁGINAS INTERIORES (SALUD, HOGAR, ETC.)
+   ========================================================================== */
+header:not(.hero-banner) {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header:not(.hero-banner)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+header:not(.hero-banner) h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+header:not(.hero-banner) p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   6. SECCIONES INTERIORES (SISTEMA DE TARJETAS GRID)
+   ========================================================================== */
+.contenedor-articulos {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.tarjeta {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border-top: 4px solid var(--primary);
+}
+
+[data-theme="dark"] .tarjeta {
+    background-color: var(--white); 
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.tarjeta h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.tarjeta h4 {
+    color: var(--primary);
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.lista-detalles {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+}
+
+.lista-detalles li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.4rem;
+    color: var(--dark);
+}
+
+.lista-detalles li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   7. FOOTER MODERNO
+   ========================================================================== */
+footer {
+    background: var(--dark);
+    color: var(--gray-light);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    font-size: 0.9rem;
+    /* Eliminamos el margen superior excesivo para que no deje espacio en blanco */
+    margin-top: 0; 
+}
+
+/* Si el footer está en páginas interiores con tarjetas, le damos espacio */
+.contenedor-articulos + footer {
+    margin-top: 4rem;
+}
+
+footer h3 {
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+footer p {
+    opacity: 0.8;
+    margin-bottom: 0.3rem;
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES (RESPONSIVE & ACCESIBILIDAD)
+   ========================================================================== */
 @media (max-width: 768px) {
+    nav a {
+        padding: 0.5rem 1rem;
+        margin: 0.2rem;
+        font-size: 0.9rem;
+    }
+
     .hero-banner {
-        padding-left: 5%;
-        padding-right: 5%;
-        justify-content: center;
-        text-align: center;
+        padding: 2rem 1rem;
+        background-position: center; /* En móviles centramos la imagen normal */
     }
-    
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-content h2 {
-        font-size: 1.1rem;
+
+    .hero-content {
+        background: rgba(0, 93, 169, 0.6); 
+        padding: 2rem 1.5rem;
+        border-radius: var(--radius);
+        backdrop-filter: blur(4px);
     }
 }
-/* ================= ACCESIBILIDAD ================= */
-:focus-visible {
-    outline: 3px solid var(--primary);
-    outline-offset: 2px;
-    border-radius: 4px;
+
+@media (max-width: 480px) {
+    nav { padding: 0.5rem; }
+    nav a {
+        display: inline-block;
+        margin: 0.1rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    .btn-mostrar {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+    .tarjeta { padding: 1.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
