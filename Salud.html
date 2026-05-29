@@ -11,7 +11,7 @@
     <nav>
 
         <!-- Para el logo-->
-        <img src="Logo_invierno 1.png" alt="Logo Adaptate al invierno" class="nav-logo-superior">
+        <img src="Logo/Logo invierno 2.png" alt="Logo Adaptate al invierno" class="nav-logo-superior">
 
         <div class="nav-links">
             <a href="inicio.html">Inicio</a>
@@ -139,16 +139,56 @@
             </ul>
         </article>
 
+    <!-- Las recomendaciones hiran cambiando/rotanto -->
+        <section class="seccion-carrusel">
+    <h2>Recomendaciones Generales</h2>
     
-        <h2>Recomendaciones generales</h2>
-        <ul class="lista-detalles">
-                <li>Abrigarse bien.</li>
-                <li>Lavarse las manos frecuentemente.</li>
-                <li>Tomar suficiente agua.</li>
-                <li>Comer frutas y verduras.</li>
-                <li>Evitar cambios bruscos de temperatura.</li>
-                <li>Mantener ventilados los espacios.</li>
-            </ul>
+    <div class="carrusel-contenedor">
+        <div class="diapositiva activa">
+            <div class="carrusel-texto">
+                <h3>Abrigarse bien</h3>
+                <p>Usa varias capas de ropa para mantener el calor corporal de manera eficiente.</p>
+            </div>
+            <img src="img recomendaciones salud/Abrigado 1.jpeg" alt="Persona abrigándose bien" width="300"> 
+        
+        </div>
+
+        <div class="diapositiva">
+            <div class="carrusel-texto">
+                <h3>Lavarse las manos</h3>
+                <p>Lávate las manos frecuentemente para evitar <br> 
+                el contagio de virus invernales.</p>
+            </div>
+            <img src="img recomendaciones salud/Lavar manos 1.JPG" alt="Lavado de manos" width="300">
+        </div>
+
+        <div class="diapositiva">
+            <div class="carrusel-texto">
+                <h3>Hidratación constante</h3>
+                <p>Toma suficiente agua; el cuerpo necesita mantenerse hidratado aunque haga frío.</p>
+            </div>
+            <img src="img recomendaciones salud/persona-tomando-agua.jpg" alt="Una mujer tomando agua" width="300">
+        </div>
+
+        <div class="diapositiva">
+            <div class="carrusel-texto">
+                <h3>Alimentación sana</h3>
+                <p>Consume frutas y verduras ricas en vitamina C para fortalecer tus defensas.</p>
+            </div>
+            <img src="img recomendaciones salud/Comida saludable 1.jpeg" 
+            alt="Una niña con muchas frutas y verduras" width="300">
+        </div>
+
+         <div class="diapositiva">
+            <div class="carrusel-texto">
+                <h3>Mantener ventilados los espacios</h3>
+                <p>Evita la acumulación de gérmenes y mejora la calidad del aire interior.</p>
+            </div>
+            <img src="img recomendaciones salud/Ventilacion 2.jpeg" 
+            alt="Una niña con muchas frutas y verduras" width="300">
+        </div>
+    </div>
+</section>
           
     </main>
 
@@ -157,5 +197,38 @@
         <p>© 2026 Adaptate al invierno - Todos los derechos reservados</p>
         <p>Contactos: masinfoadaptartealinvierno@gmail.com</p>
     </footer>
+
+<!-- Esto es para que funcione la rotación de las recomendaciones -->
+
+<script>
+        const diapositivas = document.querySelectorAll('.diapositiva');
+        let indiceActual = 0;
+
+        function cambiarDiapositiva() {
+            // 1. Identificar la diapositiva que está activa actualmente y mandarla a la izquierda
+            const activa = diapositivas[indiceActual];
+            activa.classList.remove('activa');
+            activa.classList.add('salida');
+
+            // 2. Calcular el índice de la siguiente diapositiva
+            indiceActual = (indiceActual + 1) % diapositivas.length;
+
+            // 3. Preparar la nueva diapositiva (quitarle efecto de salida anterior por si acaso)
+            const siguiente = diapositivas[indiceActual];
+            siguiente.classList.remove('salida');
+            siguiente.classList.add('activa');
+
+            // Limpieza: quitamos la clase 'salida' después de que termine su animación 
+            // para que vuelva a esperar a la derecha de forma invisible
+            setTimeout(() => {
+                activa.classList.remove('salida');
+            }, 600); // 600ms coincide con la duración del transition en CSS
+        }
+
+        // Ejecutar la función automáticamente cada 8000 milisegundos (8 segundos)
+        setInterval(cambiarDiapositiva, 8000);
+    </script>
+</body>
+
 </body>
 </html>
