@@ -122,6 +122,37 @@ nav a:hover {
     transform: scale(1.1);
 }
 
+/* PARA QUE SE VEA EL LOGO*/ 
+
+nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 1rem;                      /* Ajustamos ligeramente el espaciado interno */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-sm);
+    
+    display: flex;
+    flex-direction: column;                  /* ¡Aquí está el truco! Apila el logo sobre los enlaces */
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;                             /* Espacio exacto controlado entre el logo y los botones */
+}
+
+/* Estilos exclusivos para el Logo en la parte superior */
+.nav-logo-superior {
+    height: 120px;                            /* Ahora puedes darle un buen tamaño visible sin romper nada */
+    width: auto;                             /* Mantiene su proporción perfecta */
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.nav-logo-superior:hover {
+    transform: scale(1.03);                  /* Pequeño efecto interactivo elegante al pasar el cursor */
+}
+
 /* ==========================================================================
    4. SECCIÓN DE INICIO (CENTRADITA Y SIN RECORTES BLANCOS)
    ========================================================================== */
