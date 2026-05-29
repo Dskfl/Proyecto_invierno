@@ -230,6 +230,13 @@ nav {
     box-shadow: var(--shadow-md);
 }
 
+/* Esto afectará ÚNICAMENTE al logo que está dentro del hero-banner de inicio */
+.hero-banner .nav-logo-superior {
+    width: 100%;            /* Permite que sea responsivo */
+    max-width: 350px;       /* ¡Aquí ajustas el tamaño grande que quieres */
+    height: auto;           /* Mantiene las proporciones correctas sin deformar */
+}
+
 /* ==========================================================================
    5. CABECERAS PARA LAS PÁGINAS INTERIORES (SALUD, HOGAR, ETC.)
    ========================================================================== */

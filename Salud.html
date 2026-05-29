@@ -7,16 +7,15 @@
     <link rel="stylesheet" href="estilo.css"> 
 </head>
 <body>
-    <!-- Navegación superior -->
-    <nav>
-
-        <!-- Para el logo-->
+     <!-- Navegación superior (Glassmorphism) -->
+  <nav>
+    <!-- Para el logo-->
         <img src="Logo/Logo invierno 2.png" alt="Logo Adaptate al invierno" class="nav-logo-superior">
-
+        
         <div class="nav-links">
             <a href="inicio.html">Inicio</a>
             <a href="Salud.html">Salud</a>
-            <a href="Hogar.html" style="background: var(--primary); color: white;">Hogar</a>
+            <a href="Hogar.html">Hogar</a>
             <a href="Curiosidades.html">Curiosidades</a>
             <a href="Medio ambiente.html">Medio ambiente</a>
         </div>
@@ -104,7 +103,7 @@
                 <li>En casos graves, hospitalización.</li>
             </ul>
              <br>
-            <img src="img de salud/Neumonia.jpeg" alt=" OTRA COSA " width="200">
+            <img src="img de salud/Neumonia.jpeg" alt="Imagen informativa sobre la neumonía" width="200">
             
         </article>
 
@@ -121,6 +120,8 @@
                 <li>Evitar aire muy frío.</li>
                 <li>Cubrir nariz y boca al salir.</li>
             </ul>
+             <br>
+            <img src="img de salud/Asma 1.JPG" alt="Imagen informativa sobre el asma" width="200">
         </article>
 
         <article class="tarjeta">
@@ -137,6 +138,8 @@
                 <li>Medicamentos para el dolor.</li>
                 <li>Antibióticos solo si el médico lo indica.</li>
             </ul>
+             <br>
+            <img src="img de salud/Faringitis 1.jpeg" alt="Imagen informativa sobre la faringitis" width="200">
         </article>
 
     <!-- Las recomendaciones hiran cambiando/rotanto -->
@@ -147,7 +150,8 @@
         <div class="diapositiva activa">
             <div class="carrusel-texto">
                 <h3>Abrigarse bien</h3>
-                <p>Usa varias capas de ropa para mantener el calor corporal de manera eficiente.</p>
+                <p>Usa varias capas de ropa para mantener el calor
+                 corporal de manera eficiente, especialmente niños y adultos mayores.</p>
             </div>
             <img src="img recomendaciones salud/Abrigado 1.jpeg" alt="Persona abrigándose bien" width="300"> 
         
@@ -157,7 +161,8 @@
             <div class="carrusel-texto">
                 <h3>Lavarse las manos</h3>
                 <p>Lávate las manos frecuentemente para evitar <br> 
-                el contagio de virus invernales.</p>
+                el contagio de virus invernales. Lavarse las <br> 
+                manos elimina virus y bacterias.</p>
             </div>
             <img src="img recomendaciones salud/Lavar manos 1.JPG" alt="Lavado de manos" width="300">
         </div>
@@ -185,6 +190,16 @@
                 <p>Evita la acumulación de gérmenes y mejora la calidad del aire interior.</p>
             </div>
             <img src="img recomendaciones salud/Ventilacion 2.jpeg" 
+            alt="Una niña con muchas frutas y verduras" width="300">
+        </div>
+
+        <div class="diapositiva">
+            <div class="carrusel-texto">
+                <h3>Usar ropa impermeable si hay lluvias constantes</h3>
+                <p>Evita que el cuerpo se moje y se enfríe, lo que puede aumentar 
+                    el riesgo de enfermedades respiratorias.</p>
+            </div>
+            <img src="img recomendaciones salud/Ropa impermeable 1.avif" 
             alt="Una niña con muchas frutas y verduras" width="300">
         </div>
     </div>
@@ -225,8 +240,8 @@
             }, 600); // 600ms coincide con la duración del transition en CSS
         }
 
-        // Ejecutar la función automáticamente cada 8000 milisegundos (8 segundos)
-        setInterval(cambiarDiapositiva, 8000);
+        // Ejecutar la función automáticamente cada 10000 milisegundos (10 segundos)
+        setInterval(cambiarDiapositiva, 10000);
     </script>
 </body>
 
