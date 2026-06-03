@@ -240,6 +240,25 @@ nav {
 /* ==========================================================================
    5. CABECERAS PARA LAS PÁGINAS INTERIORES (SALUD, HOGAR, ETC.)
    ========================================================================== */
+
+   /* TARJETA DE AVISO (SALUD)   */
+.tarjeta-aviso {
+    background-color: #dc3545; 
+    color: #ffffff;            /* Letras completamente blancas */
+    padding: 1.5rem;           /* Espaciado interno para que respire el texto */
+    border-radius: 8px;        
+    max-width: 800px;          /* Ancho máximo para que no se estire demasiado en PC */
+    margin: 2rem auto;         /* El 'auto' a los lados se encarga de centrarla horizontalmente */
+    text-align: center;        /* Centra el texto por dentro de la tarjeta */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Una pequeña sombra suave para darle volumen */
+}
+
+.tarjeta-aviso p {
+    margin: 0;                 /* Quitamos márgenes por defecto del párrafo */
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
 header:not(.hero-banner) {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: var(--white);
