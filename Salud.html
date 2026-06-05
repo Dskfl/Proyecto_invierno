@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salud - Adáptate al invierno</title>
-    <!-- Si usas un archivo externo, mantén esta línea: <link rel="stylesheet" href="estilo.css"> -->
     <style>
         /* Variables de colores para mantener consistencia */
         :root {
@@ -29,20 +28,29 @@
             line-height: 1.6;
         }
 
-        /* --- Navegación superior (Glassmorphism) --- */
+        /* --- Navegación superior (Totalmente Centrada) --- */
         nav {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Centra el contenedor en la pantalla */
             align-items: center;
             padding: 1rem 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-contenedor {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* CAMBIO: Esto centra el logo junto con los links en medio */
+            gap: 2.5rem; /* Espacio entre el logo y los enlaces */
+            max-width: 1200px;
+            width: 100%;
         }
 
         .nav-logo-superior {
@@ -148,7 +156,7 @@
         .tarjeta img {
             border-radius: 8px;
             object-fit: cover;
-            margin-top: auto; /* Empuja la imagen al fondo para que las tarjetas se alineen */
+            margin-top: auto;
             transition: transform 0.3s ease;
         }
 
@@ -180,7 +188,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /* Animación y posicionamiento de diapositivas usando transform para mejor rendimiento */
         .diapositiva {
             position: absolute;
             top: 0;
@@ -194,7 +201,7 @@
             padding: 2rem;
             transform: translateX(100%);
             transition: transform 0.6s ease-in-out;
-            visibility: hidden; /* Oculta las que no están en pantalla */
+            visibility: hidden;
         }
 
         .diapositiva.activa {
@@ -241,7 +248,7 @@
         /* --- Responsividad adicional --- */
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Aquí podrías implementar un menú hamburguesa en el futuro */
+                display: none;
             }
             .carrusel-contenedor {
                 height: 400px;
@@ -250,20 +257,20 @@
     </style>
 </head>
 <body>
-    <!-- Navegación superior (Glassmorphism) -->
     <nav>
-        <img src="Logo/Logo invierno sin fondo.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
-        
-        <div class="nav-links">
-            <a href="inicio.html">Inicio</a>
-            <a href="Salud.html">Salud</a>
-            <a href="Hogar.html">Hogar</a>
-            <a href="Curiosidades.html">Curiosidades</a>
-            <a href="Medio ambiente.html">Medio ambiente</a>
+        <div class="nav-contenedor">
+            <img src="Logo/Logo invierno sin fondo.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
+            
+            <div class="nav-links">
+                <a href="inicio.html">Inicio</a>
+                <a href="Salud.html">Salud</a>
+                <a href="Hogar.html">Hogar</a>
+                <a href="Curiosidades.html">Curiosidades</a>
+                <a href="Medio ambiente.html">Medio ambiente</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Cabecera de la sección -->
     <header>
         <h1>Cuida tu Salud</h1>
         <p>Enfermedades comunes en invierno y cómo prevenirlas</p>
@@ -275,7 +282,6 @@
         consulta a un médico.</p>
     </div>
 
-    <!-- Contenedor principal usando el sistema de tarjetas -->
     <main class="contenedor-articulos">
         
         <article class="tarjeta">
@@ -380,7 +386,6 @@
         </article>
     </main>
 
-    <!-- Las recomendaciones irán cambiando/rotando -->
     <section class="seccion-carrusel">
         <h2>Recomendaciones Generales</h2>
         
@@ -441,33 +446,26 @@
         <p>Contactos: masinfoadaptartealinvierno@gmail.com</p>
     </footer>
 
-    <!-- Script para la rotación de las recomendaciones -->
     <script>
         const diapositivas = document.querySelectorAll('.diapositiva');
         let indiceActual = 0;
 
         function cambiarDiapositiva() {
-            // 1. Identificar la diapositiva que está activa actualmente y mandarla a la izquierda
             const activa = diapositivas[indiceActual];
             activa.classList.remove('activa');
             activa.classList.add('salida');
 
-            // 2. Calcular el índice de la siguiente diapositiva
             indiceActual = (indiceActual + 1) % diapositivas.length;
 
-            // 3. Preparar la nueva diapositiva (quitarle efecto de salida anterior por si acaso)
             const siguiente = diapositivas[indiceActual];
             siguiente.classList.remove('salida');
             siguiente.classList.add('activa');
 
-            // Limpieza: quitamos la clase 'salida' después de que termine su animación 
-            // para que vuelva a esperar a la derecha de forma invisible
             setTimeout(() => {
                 activa.classList.remove('salida');
-            }, 600); // 600ms coincide con la duración del transition en CSS
+            }, 600);
         }
 
-        // Ejecutar la función automáticamente cada 10000 milisegundos (10 segundos)
         setInterval(cambiarDiapositiva, 10000);
     </script>
 </body>
