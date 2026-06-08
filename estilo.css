@@ -294,24 +294,26 @@ header:not(.hero-banner) p {
 }
 
 /* ==========================================================================
-   6. SECCIONES INTERIORES (SISTEMA DE TARJETAS GRID)
+   6. SECCIONES INTERIORES (SISTEMA DE TARJETAS HORIZONTALES)
    ========================================================================== */
 .contenedor-articulos {
-    max-width: 3000px;
+    max-width: 1000px; /* Reducimos un poco el ancho para que la lectura sea más cómoda */
     margin: 3rem auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: 1fr; /* Una sola columna para que las tarjetas horizontales tengan espacio */
     gap: 2rem;
 }
 
 .tarjeta {
     background-color: var(--white);
-    padding: 2rem;
     border-radius: var(--radius);
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
-    border-top: 4px solid var(--primary);
+    border-left: 4px solid var(--primary); /* Cambiamos el borde arriba por un acento lateral */
+    display: flex;      /* Magia de flexbox para diseño horizontal */
+    flex-direction: row;
+    overflow: hidden;   /* Asegura que la imagen respete los bordes redondeados */
 }
 
 [data-theme="dark"] .tarjeta {
@@ -323,18 +325,40 @@ header:not(.hero-banner) p {
     box-shadow: var(--shadow-md);
 }
 
+/* Estilos para la imagen dentro de la tarjeta */
+.tarjeta img {
+    width: 40%;
+    min-height: 250px;
+    object-fit: cover;      /* Evita que la imagen se deforme */
+    object-position: center;
+}
+
+/* Contenedor exclusivo para los textos */
+.tarjeta-contenido {
+    width: 60%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el texto verticalmente */
+}
+
 .tarjeta h3 {
     color: var(--primary-dark);
     margin-bottom: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 .tarjeta h4 {
     color: var(--primary);
-    margin-top: 1.2rem;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
     font-weight: 600;
+}
+
+.tarjeta p {
+    color: var(--dark);
+    margin-bottom: 1rem;
 }
 
 .lista-detalles {
@@ -359,6 +383,25 @@ header:not(.hero-banner) p {
     line-height: 1;
 }
 
+/* --- Adaptación para celulares (vuelven a ser verticales) --- */
+@media (max-width: 768px) {
+    .tarjeta {
+        flex-direction: column;
+        border-left: none;
+        border-top: 4px solid var(--primary);
+    }
+    
+    .tarjeta img {
+        width: 100%;
+        height: 200px;
+        min-height: auto;
+    }
+    
+    .tarjeta-contenido {
+        width: 100%;
+        padding: 1.5rem;
+    }
+}
 /* ==========================================================================
    7. FOOTER MODERNO
    ========================================================================== */
