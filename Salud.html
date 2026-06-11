@@ -4,272 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salud - Adáptate al invierno</title>
-    <style>
-        /* Variables de colores para mantener consistencia */
-        :root {
-            --color-fondo: #f0f8ff;
-            --color-texto: #333333;
-            --color-primario: #0077b6;
-            --color-secundario: #00b4d8;
-            --color-alerta: #e63946;
-            --fondo-tarjeta: #ffffff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--color-fondo);
-            color: var(--color-texto);
-            line-height: 1.6;
-        }
-
-        /* --- Navegación superior (Totalmente Centrada) --- */
-        nav {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            display: flex;
-            justify-content: center; /* Centra el contenedor en la pantalla */
-            align-items: center;
-            padding: 1rem 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-contenedor {
-            display: flex;
-            align-items: center;
-            justify-content: center; /* CAMBIO: Esto centra el logo junto con los links en medio */
-            gap: 2.5rem; /* Espacio entre el logo y los enlaces */
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .nav-logo-superior {
-            height: 50px;
-            object-fit: contain;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--color-primario);
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-secundario);
-        }
-
-        /* --- Cabecera --- */
-        header {
-            text-align: center;
-            background: linear-gradient(135deg, var(--color-secundario), var(--color-primario));
-            color: white;
-            padding: 3rem 1rem;
-            margin-bottom: 2rem;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Tarjeta de Aviso --- */
-        .tarjeta-aviso {
-            background-color: #ffe5e5;
-            color: var(--color-alerta);
-            padding: 1.2rem;
-            margin: 0 auto 2rem auto;
-            max-width: 800px;
-            border-left: 5px solid var(--color-alerta);
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.95rem;
-        }
-
-        /* --- Contenedor Principal (Grid de Tarjetas) --- */
-        .contenedor-articulos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 0 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .tarjeta {
-            background-color: var(--fondo-tarjeta);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .tarjeta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .tarjeta h3 {
-            color: var(--color-primario);
-            margin-bottom: 0.5rem;
-        }
-
-        .tarjeta h4 {
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            align-self: flex-start;
-            color: var(--color-secundario);
-        }
-
-        .tarjeta p {
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .lista-detalles {
-            text-align: left;
-            padding-left: 1.5rem;
-            margin-bottom: 1.5rem;
-            width: 100%;
-            font-size: 0.9rem;
-        }
-
-        .tarjeta img {
-            border-radius: 8px;
-            object-fit: cover;
-            margin-top: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .tarjeta img:hover {
-            transform: scale(1.05);
-        }
-
-        /* --- Sección de Carrusel --- */
-        .seccion-carrusel {
-            text-align: center;
-            padding: 3rem 5%;
-            background-color: #caf0f8;
-            margin-top: 3rem;
-        }
-
-        .seccion-carrusel h2 {
-            color: var(--color-primario);
-            margin-bottom: 2rem;
-        }
-
-        .carrusel-contenedor {
-            position: relative;
-            max-width: 700px;
-            height: 350px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 12px;
-            background: white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .diapositiva {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            transform: translateX(100%);
-            transition: transform 0.6s ease-in-out;
-            visibility: hidden;
-        }
-
-        .diapositiva.activa {
-            transform: translateX(0);
-            visibility: visible;
-        }
-
-        .diapositiva.salida {
-            transform: translateX(-100%);
-            visibility: visible;
-        }
-
-        .carrusel-texto h3 {
-            color: var(--color-primario);
-            margin-bottom: 0.5rem;
-        }
-
-        .carrusel-texto p {
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .diapositiva img {
-            border-radius: 8px;
-            max-height: 180px;
-            object-fit: cover;
-        }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #03045e;
-            color: white;
-            margin-top: 0;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-
-        /* --- Responsividad adicional --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .carrusel-contenedor {
-                height: 400px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
+    
     <nav>
-        <div class="nav-contenedor">
-            <img src="Logo/Logo invi sin fondo con orilla blanca.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
-            
-            <div class="nav-links">
-                <a href="inicio.html">Inicio</a> 
-                <a href="Salud.html">Salud</a>
-                <a href="Hogar.html">Hogar</a>
-                <a href="Curiosidades.html">Curiosidades</a>
-                <a href="Medio ambiente.html">Medio ambiente</a>
+        <img src="Logo/Logo invi sin fondo con orilla blanca.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
+        
+        <div class="nav-links">
+            <a href="inicio.html">Inicio</a> 
+            <a href="Salud.html">Salud</a>
+            <a href="Hogar.html">Hogar</a>
+            <a href="Curiosidades.html">Curiosidades</a>
+            <a href="Medio ambiente.html">Medio ambiente</a>
 
-                <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">🌙</button>
-            </div>
+            <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">🌙</button>
         </div>
     </nav>
 
@@ -287,160 +36,173 @@
     <main class="contenedor-articulos">
         
         <article class="tarjeta">
-            <h3>🦠 Resfriado común</h3>
-            <p>Es una infección viral leve muy frecuente en épocas frías.</p>
-            
-            <h4>Síntomas:</h4>
-            <p>Congestión nasal, estornudos, dolor de garganta, tos leve, dolor de cabeza y cansancio.</p>
-            
-            <h4>Tratamiento:</h4>
-            <ul class="lista-detalles">
-                <li>Descansar adecuadamente.</li>
-                <li>Tomar abundantes líquidos.</li>
-                <li>Consumir bebidas calientes.</li>
-                <li>Usar medicamentos para aliviar síntomas (fiebre o dolor).</li>
-                <li>Mantenerse abrigado.</li>
-            </ul>
-            <img src="img de salud/Resfriado.jpeg" alt="Una ilustración de una persona resfriada" width="200">
+            <img src="img de salud/Resfriado.jpeg" alt="Una ilustración de una persona resfriada">
+            <div class="tarjeta-contenido">
+                <h3>🦠 Resfriado común</h3>
+                <p>Es una infección viral leve muy frecuente en épocas frías.</p>
+                
+                <h4>Síntomas:</h4>
+                <p>Congestión nasal, estornudos, dolor de garganta, tos leve, dolor de cabeza y cansancio.</p>
+                
+                <h4>Tratamiento:</h4>
+                <ul class="lista-detalles">
+                    <li>Descansar adecuadamente.</li>
+                    <li>Tomar abundantes líquidos.</li>
+                    <li>Consumir bebidas calientes.</li>
+                    <li>Usar medicamentos para aliviar síntomas (fiebre o dolor).</li>
+                    <li>Mantenerse abrigado.</li>
+                </ul>
+            </div>
         </article>
 
         <article class="tarjeta">
-            <h3>🌡️ Gripe (Influenza)</h3>
-            <p>Infección respiratoria que puede ser más severa que un resfriado tradicional.</p>
-            
-            <h4>Síntomas:</h4>
-            <p>Fiebre alta, dolores musculares, escalofríos, fatiga extrema y tos seca.</p>
-            
-            <h4>Tratamiento:</h4>
-            <ul class="lista-detalles">
-                <li>Reposo absoluto en cama.</li>
-                <li>Hidratación constante.</li>
-                <li>Consultar a un médico si los síntomas empeoran.</li>
-            </ul>
-            <img src="img de salud/Gripe.jpeg" alt="Una persona con gripe" width="200">
+            <img src="img de salud/Gripe.jpeg" alt="Una persona con gripe">
+            <div class="tarjeta-contenido">
+                <h3>🌡️ Gripe (Influenza)</h3>
+                <p>Infección respiratoria que puede ser más severa que un resfriado tradicional.</p>
+                
+                <h4>Síntomas:</h4>
+                <p>Fiebre alta, dolores musculares, escalofríos, fatiga extrema y tos seca.</p>
+                
+                <h4>Tratamiento:</h4>
+                <ul class="lista-detalles">
+                    <li>Reposo absoluto en cama.</li>
+                    <li>Hidratación constante.</li>
+                    <li>Consultar a un médico si los síntomas empeoran.</li>
+                </ul>
+            </div>
         </article>
 
         <article class="tarjeta">
-            <h3>Bronquitis</h3>
-            <p>Inflamación de los bronquios, frecuente después de una gripe o resfriado.</p>
-            
-            <h4>Síntomas:</h4>
-            <p>Tos con flema, dificultad para respirar, silbidos al respirar, cansancio y dolor en el pecho.</p>
-            
-            <h4>Tratamiento:</h4>
-            <ul class="lista-detalles">
-                <li>Mucho descanso.</li>
-                <li>Beber agua.</li>
-                <li>Evitar humo y frío extremo.</li>
-                <li>Jarabes o medicamentos indicados por el médico.</li>
-            </ul>
-            <img src="img de salud/Bronquitis.jpeg" alt="Una persona tosiendo por tener bronquitis" width="200">
+            <img src="img de salud/Bronquitis.jpeg" alt="Una persona tosiendo por tener bronquitis">
+            <div class="tarjeta-contenido">
+                <h3>Bronquitis</h3>
+                <p>Inflamación de los bronquios, frecuente después de una gripe o resfriado.</p>
+                
+                <h4>Síntomas:</h4>
+                <p>Tos con flema, dificultad para respirar, silbidos al respirar, cansancio y dolor en el pecho.</p>
+                
+                <h4>Tratamiento:</h4>
+                <ul class="lista-detalles">
+                    <li>Mucho descanso.</li>
+                    <li>Beber agua.</li>
+                    <li>Evitar humo y frío extremo.</li>
+                    <li>Jarabes o medicamentos indicados por el médico.</li>
+                </ul>
+            </div>
         </article>
 
         <article class="tarjeta">
-            <h3>Neumonía</h3>
-            <p>❄️ Infección más seria que afecta los pulmones.</p>
-            
-            <h4>Síntomas:</h4>
-            <p>Fiebre alta, tos con flema, dolor en el pecho, dificultad para respirar y debilidad.</p>
-            
-            <h4>Tratamiento:</h4>
-            <ul class="lista-detalles">
-                <li>Atención médica inmediata.</li>
-                <li>Antibióticos si es bacteriana.</li>
-                <li>Reposo e hidratación.</li>
-                <li>En casos graves, hospitalización.</li>
-            </ul>
-            <img src="img de salud/Neumonia.jpeg" alt="Imagen informativa sobre la neumonía" width="200">
+            <img src="img de salud/Neumonia.jpeg" alt="Imagen informativa sobre la neumonía">
+            <div class="tarjeta-contenido">
+                <h3>Neumonía</h3>
+                <p>❄️ Infección más seria que afecta los pulmones.</p>
+                
+                <h4>Síntomas:</h4>
+                <p>Fiebre alta, tos con flema, dolor en el pecho, dificultad para respirar y debilidad.</p>
+                
+                <h4>Tratamiento:</h4>
+                <ul class="lista-detalles">
+                    <li>Atención médica inmediata.</li>
+                    <li>Antibióticos si es bacteriana.</li>
+                    <li>Reposo e hidratación.</li>
+                    <li>En casos graves, hospitalización.</li>
+                </ul>
+            </div>
         </article>
 
         <article class="tarjeta">
-            <h3>Asma agravada por el frío</h3>
-            <p>🌬️ El aire frío puede empeorar el asma.</p>
-            
-            <h4>Síntomas:</h4>
-            <p>Falta de aire, tos, silbidos al respirar, presión en el pecho.</p>
-            
-            <h4>Tratamiento:</h4>
-            <ul class="lista-detalles">
-                <li>Usar inhaladores recetados.</li>
-                <li>Evitar aire muy frío.</li>
-                <li>Cubrir nariz y boca al salir.</li>
-            </ul>
-            <img src="img de salud/Asma 1.JPG" alt="Imagen informativa sobre el asma" width="200">
+            <img src="img de salud/Asma 1.JPG" alt="Imagen informativa sobre el asma">
+            <div class="tarjeta-contenido">
+                <h3>Asma agravada por el frío</h3>
+                <p>🌬️ El aire frío puede empeorar el asma.</p>
+                
+                <h4>Síntomas:</h4>
+                <p>Falta de aire, tos, silbidos al respirar, presión en el pecho.</p>
+                
+                <h4>Tratamiento:</h4>
+                <ul class="lista-detalles">
+                    <li>Usar inhaladores recetados.</li>
+                    <li>Evitar aire muy frío.</li>
+                    <li>Cubrir nariz y boca al salir.</li>
+                </ul>
+            </div>
         </article>
 
         <article class="tarjeta">
-            <h3>Faringitis</h3>
-            <p>🔥 Inflamación de la garganta causada por virus o bacterias.</p>
-            
-            <h4>Síntomas:</h4>
-            <p>Dolor de garganta, dificultad para tragar, fiebre, garganta roja.</p>
-            
-            <h4>Tratamiento:</h4>
-            <ul class="lista-detalles">
-                <li>Tomar líquidos calientes.</li>
-                <li>Hacer gárgaras con agua tibia y sal.</li>
-                <li>Medicamentos para el dolor.</li>
-                <li>Antibióticos solo si el médico lo indica.</li>
-            </ul>
-            <img src="img de salud/Faringitis 1.jpeg" alt="Imagen informativa sobre la faringitis" width="200">
+            <img src="img de salud/Faringitis 1.jpeg" alt="Imagen informativa sobre la faringitis">
+            <div class="tarjeta-contenido">
+                <h3>Faringitis</h3>
+                <p>🔥 Inflamación de la garganta causada por virus o bacterias.</p>
+                
+                <h4>Síntomas:</h4>
+                <p>Dolor de garganta, dificultad para tragar, fiebre, garganta roja.</p>
+                
+                <h4>Tratamiento:</h4>
+                <ul class="lista-detalles">
+                    <li>Tomar líquidos calientes.</li>
+                    <li>Hacer gárgaras con agua tibia y sal.</li>
+                    <li>Medicamentos para el dolor.</li>
+                    <li>Antibióticos solo si el médico lo indica.</li>
+                </ul>
+            </div>
         </article>
+
+        <section class="seccion-carrusel">
+            <h2>Recomendaciones Generales</h2>
+            
+            <div class="carrusel-contenedor">
+                <div class="diapositiva activa">
+                    <img src="img recomendaciones salud/Abrigado 1.jpeg" alt="Persona abrigándose bien"> 
+                    <div class="carrusel-texto">
+                        <h3>Abrigarse bien</h3>
+                        <p>Usa varias capas de ropa para mantener el calor corporal de manera eficiente, especialmente niños y adultos mayores.</p>
+                    </div>
+                </div>
+
+                <div class="diapositiva">
+                    <img src="img recomendaciones salud/Lavar manos 1.JPG" alt="Lavado de manos">
+                    <div class="carrusel-texto">
+                        <h3>Lavarse las manos</h3>
+                        <p>Lávate las manos frecuentemente para evitar el contagio de virus invernales. Lavarse las manos elimina virus y bacterias.</p>
+                    </div>
+                </div>
+
+                <div class="diapositiva">
+                    <img src="img recomendaciones salud/persona-tomando-agua.jpg" alt="Una mujer tomando agua">
+                    <div class="carrusel-texto">
+                        <h3>Hidratación constante</h3>
+                        <p>Toma suficiente agua; el cuerpo necesita mantenerse hidratado aunque haga frío.</p>
+                    </div>
+                </div>
+
+                <div class="diapositiva">
+                    <img src="img recomendaciones salud/Comida saludable 1.jpeg" alt="Una niña con muchas frutas y verduras">
+                    <div class="carrusel-texto">
+                        <h3>Alimentación sana</h3>
+                        <p>Consume frutas y verduras ricas en vitamina C para fortalecer tus defensas.</p>
+                    </div>
+                </div>
+
+                 <div class="diapositiva">
+                    <img src="img recomendaciones salud/Ventilacion 2.jpeg" alt="Ventilación de espacios">
+                    <div class="carrusel-texto">
+                        <h3>Mantener ventilados</h3>
+                        <p>Evita la acumulación de gérmenes y mejora la calidad del aire interior.</p>
+                    </div>
+                </div>
+
+                <div class="diapositiva">
+                    <img src="img recomendaciones salud/Ropa impermeable 1.avif" alt="Ropa impermeable">
+                    <div class="carrusel-texto">
+                        <h3>Usar ropa impermeable</h3>
+                        <p>Evita que el cuerpo se moje y se enfríe si hay lluvias constantes, lo que puede aumentar el riesgo de enfermedades.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
-
-    <section class="seccion-carrusel">
-        <h2>Recomendaciones Generales</h2>
-        
-        <div class="carrusel-contenedor">
-            <div class="diapositiva activa">
-                <div class="carrusel-texto">
-                    <h3>Abrigarse bien</h3>
-                    <p>Usa varias capas de ropa para mantener el calor corporal de manera eficiente, especialmente niños y adultos mayores.</p>
-                </div>
-                <img src="img recomendaciones salud/Abrigado 1.jpeg" alt="Persona abrigándose bien" width="300"> 
-            </div>
-
-            <div class="diapositiva">
-                <div class="carrusel-texto">
-                    <h3>Lavarse las manos</h3>
-                    <p>Lávate las manos frecuentemente para evitar el contagio de virus invernales. Lavarse las manos elimina virus y bacterias.</p>
-                </div>
-                <img src="img recomendaciones salud/Lavar manos 1.JPG" alt="Lavado de manos" width="300">
-            </div>
-
-            <div class="diapositiva">
-                <div class="carrusel-texto">
-                    <h3>Hidratación constante</h3>
-                    <p>Toma suficiente agua; el cuerpo necesita mantenerse hidratado aunque haga frío.</p>
-                </div>
-                <img src="img recomendaciones salud/persona-tomando-agua.jpg" alt="Una mujer tomando agua" width="300">
-            </div>
-
-            <div class="diapositiva">
-                <div class="carrusel-texto">
-                    <h3>Alimentación sana</h3>
-                    <p>Consume frutas y verduras ricas en vitamina C para fortalecer tus defensas.</p>
-                </div>
-                <img src="img recomendaciones salud/Comida saludable 1.jpeg" alt="Una niña con muchas frutas y verduras" width="300">
-            </div>
-
-             <div class="diapositiva">
-                <div class="carrusel-texto">
-                    <h3>Mantener ventilados los espacios</h3>
-                    <p>Evita la acumulación de gérmenes y mejora la calidad del aire interior.</p>
-                </div>
-                <img src="img recomendaciones salud/Ventilacion 2.jpeg" alt="Ventilación de espacios" width="300">
-            </div>
-
-            <div class="diapositiva">
-                <div class="carrusel-texto">
-                    <h3>Usar ropa impermeable si hay lluvias constantes</h3>
-                    <p>Evita que el cuerpo se moje y se enfríe, lo que puede aumentar el riesgo de enfermedades respiratorias.</p>
-                </div>
-                <img src="img recomendaciones salud/Ropa impermeable 1.avif" alt="Ropa impermeable" width="300">
-            </div>
-        </div>
-    </section>
 
     <footer>
         <h3>Información adicional</h3>
@@ -472,18 +234,18 @@
     </script>
 
     <script>
-     const themeToggle = document.getElementById('theme-toggle');
-     const currentTheme = localStorage.getItem('theme') || 'light';
-     document.documentElement.setAttribute('data-theme', currentTheme);
-     themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
 
-     themeToggle.addEventListener('click', () => {
-     const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-     document.documentElement.setAttribute('data-theme', theme);
-     localStorage.setItem('theme', theme);
-     themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-     });
-    </script>
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        });
+    </script>
 
 </body>
 </html>
