@@ -259,14 +259,16 @@
 <body>
     <nav>
         <div class="nav-contenedor">
-            <img src="Logo/Logo invierno sin fondo.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
+            <img src="Logo/Logo invi sin fondo con orilla blanca.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
             
             <div class="nav-links">
-                <a href="inicio.html">Inicio</a>
+                <a href="inicio.html">Inicio</a> 
                 <a href="Salud.html">Salud</a>
                 <a href="Hogar.html">Hogar</a>
                 <a href="Curiosidades.html">Curiosidades</a>
                 <a href="Medio ambiente.html">Medio ambiente</a>
+
+                <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">🌙</button>
             </div>
         </div>
     </nav>
@@ -468,5 +470,20 @@
 
         setInterval(cambiarDiapositiva, 10000);
     </script>
+
+    <script>
+     const themeToggle = document.getElementById('theme-toggle');
+     const currentTheme = localStorage.getItem('theme') || 'light';
+     document.documentElement.setAttribute('data-theme', currentTheme);
+     themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+     themeToggle.addEventListener('click', () => {
+     const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+     document.documentElement.setAttribute('data-theme', theme);
+     localStorage.setItem('theme', theme);
+     themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+     });
+    </script>
+
 </body>
 </html>

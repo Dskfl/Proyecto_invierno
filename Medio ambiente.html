@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medio Ambiente - Adáptate al invierno</title>
-    <link rel="stylesheet" href="estilo.css"> 
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
     <nav>
         <!-- Para el logo-->
-        <img src="Logo/Logo invierno sin fondo.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
+        <img src="Logo/Logo invi sin fondo con orilla blanca.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
         
         <div class="nav-links">
             <a href="inicio.html">Inicio</a>
@@ -17,6 +17,8 @@
             <a href="Hogar.html">Hogar</a>
             <a href="Curiosidades.html">Curiosidades</a>
             <a href="Medio ambiente.html" style="background: var(--primary); color: white;">Medio ambiente</a>
+            
+            <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">🌙</button>
         </div>
     </nav>
 
@@ -116,27 +118,7 @@
                 </ul>
             </div>
         </article>
-        <!-- ARTÍCULO 5 -->
-       <article class="tarjeta">
-            <img src="img de medio ambiente/cultivos.jpg" alt="Agua estancada y temporada">
-            
-            <div class="tarjeta-contenido">
-                <h3>Invierno seguro: Agua estancada y las enfermedades de la temporada</h3>
-                <p>Con la llegada de las lluvias, el ambiente cambia drásticamente. El problema ambiental de la deforestación y la acumulación de desechos no solo causa inundaciones, sino que crea el escenario perfecto para crisis de salud pública.</p>
-                
-                <p>El agua que queda estancada en llantas, botellas o charcos por días se convierte en el criadero ideal para el zancudo transmisor del dengue, zika y chikungunya. Además, la contaminación de las fuentes de agua debido a las corrientes del invierno dispara los casos de diarreas y enfermedades respiratorias. Mantener patios limpios y comunidades verdes es nuestra mejor medicina para este invierno.</p>
-                
-                <h4>¿Qué podemos hacer como ciudadanos?</h4>
-                <p>Prevenir los criaderos de zancudos y protegernos de las infecciones durante la temporada lluviosa está en nuestras manos. Con estas acciones sencillas podés blindar tu hogar y tu barrio:</p>
-                
-                <ul class="lista-detalles">
-                    <li><b>Hacé el "Plan Calache" en tu patio: </b>Da vuelta a baldes, botellas, panas o cualquier objeto que pueda acumular agua de lluvia. Si tenés llantas viejas que no usás, ponelas bajo techo o llenalas de tierra para que no se conviertan en hoteles de zancudos.</li>
-                    <li><b>Tapá bien los recipientes de agua: </b> Si en tu barrio recogen agua en barriles o pilas, asegurate de mantenerlos herméticamente tapados. Un balde destapado es el lugar favorito del zancudo del dengue para poner sus huevos.</li>
-                    <li><b>Limpiá los techos y canoas: </b>Las hojas secas y la basura acumulada en las canoas de la casa estancan el agua de lluvia en las alturas. Limpiarlas antes y durante el invierno evita que se formen criaderos invisibles sobre tu cabeza.</li>
-                </ul>
-            </div>
-        </article>
-
+        
     </main>
 
     <footer>
@@ -144,5 +126,19 @@
         <p>© 2026 Adaptate al invierno - Todos los derechos reservados</p>
         <p>Contactos: masinfoadaptartealinvierno@gmail.com</p>
     </footer>
+
+    <script>
+     const themeToggle = document.getElementById('theme-toggle');
+     const currentTheme = localStorage.getItem('theme') || 'light';
+     document.documentElement.setAttribute('data-theme', currentTheme);
+     themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+     themeToggle.addEventListener('click', () => {
+     const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+     document.documentElement.setAttribute('data-theme', theme);
+     localStorage.setItem('theme', theme);
+     themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+     });
+    </script>
 </body>
 </html>

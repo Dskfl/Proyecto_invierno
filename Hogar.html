@@ -8,14 +8,16 @@
 </head>
 <body>
     <nav>
-        <img src="Logo/Logo invierno sin fondo.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
+        <img src="Logo/Logo invi sin fondo con orilla blanca.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
         
         <div class="nav-links">
             <a href="inicio.html">Inicio</a>
             <a href="Salud.html">Salud</a>
-            <a href="Hogar.html">Hogar</a>
+            <a href="Hogar.html" style="background: var(--primary); color: white;">Hogar</a>
             <a href="Curiosidades.html">Curiosidades</a>
             <a href="Medio ambiente.html">Medio ambiente</a>
+
+            <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">🌙</button>
         </div>
     </nav>
     
@@ -74,5 +76,19 @@
         <p>© 2026 Adaptate al invierno - Todos los derechos reservados</p>
         <p>Contactos: masinfoadaptartealinvierno@gmail.com</p>
     </footer>
+
+    <script>
+     const themeToggle = document.getElementById('theme-toggle');
+     const currentTheme = localStorage.getItem('theme') || 'light';
+     document.documentElement.setAttribute('data-theme', currentTheme);
+     themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+     themeToggle.addEventListener('click', () => {
+     const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+     document.documentElement.setAttribute('data-theme', theme);
+     localStorage.setItem('theme', theme);
+     themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+     });
+    </script>
 </body>
 </html>
