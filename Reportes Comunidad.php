@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>Crear Reporte Comunitario</h2>
             <?php echo $mensaje; ?>
             
-            <form action="reportes.php" method="POST" enctype="multipart/form-data">
+            <form action="Reportes Comunidad.php" method="POST" enctype="multipart/form-data">
                 <div class="form-grupo">
                     <label for="lugar">¿Dónde sucede?</label>
                     <input type="text" id="lugar" name="lugar" class="form-control" placeholder="Ej: Calle Principal, Zona Norte" required>

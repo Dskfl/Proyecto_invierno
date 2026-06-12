@@ -586,7 +586,7 @@ footer p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Tarjetas con efecto de vidrio soplado */
+/* Tarjetas */
 .card-glass {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -595,7 +595,7 @@ footer p {
     border-radius: 16px;
     padding: 30px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-    color: #fff;
+    color: #1E7BBF;
     margin-bottom: 30px;
 }
 
@@ -622,7 +622,7 @@ footer p {
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    color: #fff;
+    color: #000000;
     font-size: 16px;
     box-sizing: border-box;
     transition: 0.3s ease;
