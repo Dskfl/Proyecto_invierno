@@ -50,10 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <nav>
-        <img src="Logo/Logo invi sin fondo con orilla blanca.png" alt="Logo Adáptate al invierno" class="nav-logo-superior">
+        <a href="index.html"><img src="Logo/Logo invi sin fondo con orilla blanca.png" 
+            alt="Logo Adáptate al invierno" class="nav-logo-superior">
+        </a>
         
         <div class="nav-links">
-            <a href="index.html">Inicio</a> 
             <a href="Salud.html">Salud</a>
             <a href="Hogar.html">Hogar</a>
             <a href="Curiosidades.html">Curiosidades</a>
