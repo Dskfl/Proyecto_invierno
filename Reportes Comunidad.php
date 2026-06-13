@@ -79,12 +79,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="Reportes Comunidad.php" method="POST" enctype="multipart/form-data">
                 <div class="form-grupo">
                     <label for="lugar">¿Dónde sucede?</label>
-                    <input type="text" id="lugar" name="lugar" class="form-control" placeholder="Ej: Calle Principal, Zona Norte" required>
+                    <input type="text" id="lugar" name="lugar" class="form-control" placeholder=
+                    "Ej: Calle Principal, Zona Norte" required>
                 </div>
 
                 <div class="form-grupo">
                     <label for="titulo">Título del Reporte</label>
-                    <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Ej: Acumulación de nieve / Avería de luz" required>
+                    <input type="text" id="titulo" name="titulo" class="form-control" placeholder=
+                    "Ej: Avería de luz" required>
                 </div>
 
                 <div class="form-grupo">
@@ -112,7 +114,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 while ($fila = mysqli_fetch_assoc($resultado)) {
                     echo "<div class='reporte-item'>";
                     echo "<h3>" . htmlspecialchars($fila['titulo']) . "</h3>";
-                    echo "<div class='reporte-meta'>📍 <strong>Lugar:</strong> " . htmlspecialchars($fila['lugar']) . " | 🗓️ " . $fila['fecha'] . "</div>";
+                    echo "<div class='reporte-meta'>📍 <strong>Lugar:</strong> " . htmlspecialchars($fila['lugar']) 
+                    . " | 🗓️ " . $fila['fecha'] . "</div>";
                     echo "<p>" . nl2br(htmlspecialchars($fila['reporte'])) . "</p>";
                     
                     // Si el reporte incluye foto, la mostramos en pantalla
